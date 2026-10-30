@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+/* System font and accessibility styles */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F6F7F9;
+  color: #1A1A1A;
+}
+
+/* Custom focus ring as per prompt: 3px focus outline #1A56DB */
+:focus-visible {
+  outline: 3px solid #1A56DB !important;
+  outline-offset: 2px !important;
+}
+
+/* Ensure Leaflet controls and markers render smoothly */
+.leaflet-container {
+  font-family: inherit;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+/* Ensure Leaflet image overlays and tiles are never squashed by Tailwind preflight */
+.leaflet-container img.leaflet-image-layer,
+.leaflet-container .leaflet-overlay-pane img {
+  max-width: none !important;
+  max-height: none !important;
+  display: block !important;
+}
+
+.dust-risk-raster-overlay,
+.rainfall-raster-overlay {
+  pointer-events: none;
+  filter: contrast(1.05) saturate(1.15);
+}
+
+/* Custom Leaflet pulse or styling */
+.custom-city-marker,
+.rainfall-grid-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
